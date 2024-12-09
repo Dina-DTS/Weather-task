@@ -26,7 +26,7 @@ searchInput.addEventListener("input", () => {
 
 async function fetchWeatherData(city) {
   try {
-    const response = await fetch(`${BASE_URL}?key=${API_KEY}&q=${city}&days=3`);
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=65b83f1966494cf4854160958240612&q=${city}&days=3`);
     const data = await response.json();
     console.log(data);
     
