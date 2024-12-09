@@ -28,8 +28,6 @@ async function fetchWeatherData(city) {
   try {
     const response = await fetch(`${BASE_URL}?key=${API_KEY}&q=${city}&days=3`);
     const data = await response.json();
-    console.log(data);
-    
 
     if (data.error) {
       alert("Error: " + data.error.message);
@@ -85,25 +83,25 @@ function updateWeatherCards(data) {
 
       /****************************************Function to get user's current location****************************************/
 
-// function getUserLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(
-//       (position) => {
-//         const { latitude, longitude } = position.coords;
-//         fetchWeatherData(`${latitude},${longitude}`);
-//       },
-//       () => {
-//         // If location access is denied, default to Cairo
-//         fetchWeatherData("Cairo");
-//       }
-//     );
-//   } else {
-//     // If geolocation is not supported, default to Cairo
-//     fetchWeatherData("Cairo");
-//   }
-// }
+function getUserLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        fetchWeatherData(`${latitude},${longitude}`);
+      },
+      () => {
+        // If location access is denied, default to Cairo
+        fetchWeatherData("Cairo");
+      }
+    );
+  } else {
+    // If geolocation is not supported, default to Cairo
+    fetchWeatherData("Cairo");
+  }
+}
 
-// getUserLocation()
+getUserLocation()
 
 
 
