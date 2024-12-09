@@ -28,6 +28,8 @@ async function fetchWeatherData(city) {
   try {
     const response = await fetch(`${BASE_URL}?key=${API_KEY}&q=${city}&days=3`);
     const data = await response.json();
+    console.log(data);
+    
 
     if (data.error) {
       alert("Error: " + data.error.message);
